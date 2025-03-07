@@ -71,9 +71,12 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    if (m_autonomousCommand != null) {
+    if (m_autonomousCommand != null) 
+    {
       m_autonomousCommand.cancel();
     }
+    SmartDashboard.putString("Elevator Mode", "coral");
+    SmartDashboard.putString("Speed", "normal");
   }
 
   @Override

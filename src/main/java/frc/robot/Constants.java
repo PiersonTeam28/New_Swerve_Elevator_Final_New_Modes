@@ -59,6 +59,24 @@ public final class Constants //Constants that must be accessed in multiple class
             return new InstantCommand(() -> mode = "coral");
         }
     }
+    private static double speedFactor = 0.25;//Between -1 and 1
+    public static double getSpeedFactor()
+    {
+        return speedFactor;
+    }
+    public static InstantCommand switchSpeeds()
+    {
+        if(speedFactor==0.20)
+        {
+            SmartDashboard.putString("Speed", "Turbo");
+            return new InstantCommand(() -> speedFactor = 0.5);//Set to 1 if necessary.
+        }
+        else
+        {
+            SmartDashboard.putString("Speed", "Normal");
+            return new InstantCommand(() -> speedFactor = 0.25);
+        }
+    }
 
 
 }

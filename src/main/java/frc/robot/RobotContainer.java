@@ -45,10 +45,10 @@ public class RobotContainer {
         Constants.drivetrain.setDefaultCommand(
             // Drivetrain will execute this command periodically
             Constants.drivetrain.applyRequest(() ->
-                Constants.drive.withVelocityX(-joystick0.getLeftY() * Constants.MaxSpeed * 0.5 * Math.pow(-1, alliance)) // Drive forward with negative Y (forward) #SpeedHalved
-                    .withVelocityY(-joystick0.getLeftX() * Constants.MaxSpeed * 0.5 * Math.pow(-1, alliance)) // Drive left with negative X (left) #SpeedHalved
+                Constants.drive.withVelocityX(-joystick0.getLeftY() * Constants.MaxSpeed * Constants.getSpeedFactor() * Math.pow(-1, alliance)) // Drive forward with negative Y (forward) #SpeedHalved
+                    .withVelocityY(-joystick0.getLeftX() * Constants.MaxSpeed * Constants.getSpeedFactor() * Math.pow(-1, alliance)) // Drive left with negative X (left) #SpeedHalved
                     .withRotationalRate(-joystick0.getRightX() * Constants.MaxAngularRate * 0.5) // Drive counterclockwise with negative X (left) #SpeedHalved
-            ) 
+            )                                                                              //Change if Possible(1.00)
             //# When Command Is Executed, Request Is Applied Based on What Joystick Buttons Are Being Pressed
 
             //VERY IMPORTANT, REMEMBER TO SET TO FULL SPEED FOR COMPETITION.
@@ -56,11 +56,14 @@ public class RobotContainer {
         );
         // Run SysId routines when holding back/start and X/Y.
         // Note that each routine should be run exactly once in a single log.
+        //DRIVE SYSTEM CONTROLS
         joystick0.back().and(joystick0.y()).whileTrue(Constants.drivetrain.sysIdDynamic(Direction.kForward));
         joystick0.back().and(joystick0.x()).whileTrue(Constants.drivetrain.sysIdDynamic(Direction.kReverse));
         joystick0.start().and(joystick0.y()).whileTrue(Constants.drivetrain.sysIdQuasistatic(Direction.kForward));
         joystick0.start().and(joystick0.x()).whileTrue(Constants.drivetrain.sysIdQuasistatic(Direction.kReverse));
         joystick0.leftBumper().onTrue(Constants.drivetrain.runOnce(() -> Constants.drivetrain.seedFieldCentric()));
+        joystick0.rightBumper().onTrue(Constants.switchSpeeds());
+        //Drive System Controls
 
 
         //CORAL MODE CONTROLS
@@ -83,7 +86,6 @@ public class RobotContainer {
         //CORAL MODE CONTROLS
        
         //SWITCH MODES
-        SmartDashboard.putString("Elevator Mode", "coral");
         joystick1.leftStick().onTrue(Constants.switchModes());
         //SWITCH MODES
 
