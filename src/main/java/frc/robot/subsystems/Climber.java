@@ -22,7 +22,7 @@ public class Climber extends SubsystemBase
         climberMotor = new TalonSRX(15);
         ratchetRalph = new Servo(0);
     }
-    public SequentialCommandGroup letOut()
+    public SequentialCommandGroup letOut()//May have to crank in first.
     {
         return new InstantCommand(() -> {
             ratchetRalph.setAngle(90);
