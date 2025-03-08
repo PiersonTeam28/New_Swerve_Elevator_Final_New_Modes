@@ -12,6 +12,7 @@ import frc.robot.subsystems.CoralIntake;
 import frc.robot.subsystems.AlgaeIntake;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.Flipper;
+import frc.robot.subsystems.Climber;
 
 import static edu.wpi.first.units.Units.*;
 
@@ -38,6 +39,8 @@ public final class Constants //Constants that must be accessed in multiple class
     public static final VideoCamera m_videoCamera = new VideoCamera();
 
     public static final AlgaeIntake algaeIntake = new AlgaeIntake();
+
+    public static final Climber climber = new Climber();
 
     private static String mode = "coral";
 

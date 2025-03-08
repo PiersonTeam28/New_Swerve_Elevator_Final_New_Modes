@@ -83,7 +83,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic()
   {
     Constants.elevator.setElevatorSpeed();
-    Constants.flipper.setFlipperSpeed();
+    //Constants.flipper.setFlipperSpeed();
   }
 
   @Override
